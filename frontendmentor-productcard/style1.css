@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* root applies to everything, aka html */
+:root {
+    --green-500: hsl(158, 36%, 37%);
+    --green-700: hsl(158, 42%, 18%);
+    --black-primary: hsl(212, 21%, 14%);
+    --grey-primary: hsl(228, 12%, 48%);
+    --cream-primary: hsl(30, 38%, 92%);
+    --white-primary: hsl(0, 0%, 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* 让 width/height 包括内边距padding和边框border： */
+    box-sizing: border-box;
+}
+
+body{
+    /* 将页面的根字体大小设置为 14 像素。后代元素如果使用相对单位（如 rem、em）计算时，都会以这个值为基准。 */
+    font-size:14px;
+    background-color: var(--cream-primary);
+    font-family: "Montserrat";
+    /*  将文字的字重（粗细）设置为 500*/
+    font-weight: 500;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 将 <body> 的高度设为视口高度的 100%，保证 Flex 容器的中心点恰好在屏幕正中。 */
+    height: 100vh;
+}
+
+button{
+    font-family: "Montserrat";
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--green-500);
+    /* 圆角半径为 0.5rem（约 7px），让按钮边角圆润，显得更现代友好。 */
+    border-radius: 0.5rem;
+    border:none;
+
+    cursor: pointer;
+    width: 100%;
+    /* 上下内边距为 1rem（约 14px），左右为 0，确保按钮有足够的“触控面积”且文字垂直居中。 */
+    padding: 1rem 0;
+    justify-content: center;
+    transition-duration: 150ms;
+}
+
+button:hover{
+    background-color: var(--green-700);
+}
+
+button p{
+    color: var(--white-primary);
+}
+
+button img{
+    /* 上下外边距为 0，左右外边距为 5px */
+    margin: 0 5px;
+}
+
+.price{
+    display: flex;
+    flex-direction: row;
+    font-family: "Fraunces";
+    font-weight: 700;
+    align-items: center;
+    gap: 1rem;
+}
+
+h1{
+    font-family: "Fraunces";
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--black-primary);
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--grey-primary);
+    letter-spacing: 0.375rem;
+}
+
+p {
+    color: var(--grey-primary);
+}
+
+.crossed {
+    font-weight: 500;
+    text-decoration: line-through;
+    color:var(--grey-primary)
+}
+
+.larger {
+    font-size: 2rem;
+    color: var(--green-500);
+}
+
+.card {
+    background-color: var(--white-primary);
+    border-radius: 1rem;
+    /* 隐藏任何超出卡片边界的子元素部分。 */
+    overflow: hidden;
+    max-width: 35rem;
+}
+
+.card-img{
+    max-width: 100%;
+}
+.card-img-desktop{
+    display: none;
+}
+.content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    /* 在主轴（竖直方向）上将所有子元素靠上对齐（起点对齐） */
+    justify-content: flex-start;
+    /* 在所有 Flex 项目（子元素）之间自动插入 1rem 的间距 */
+    gap: 1rem;
+}
+
+.description {
+    line-height: 1.5 rem;
+}
+
+.card-img-desktop {
+    display: none;
+}
+
+/* 当视口宽度达到或超过 600px 时，才会生效 */
+@media (min-width: 600px) {
+    .card {
+        /* 元素的 height 是 auto，也就是由它内部的内容撑开。 */
+        display: flex;
+        flex-direction: row;
+        /* 限制卡片最大宽度约为 800px（根据根字体大小），防止在大屏幕上拉得太宽。 */
+        max-width: 50rem;
+        /* 让所有子元素在交叉轴（垂直方向）上都拉伸填满卡片高度，确保图片和内容区高度一致。 */
+        align-items: stretch;
+    }
+
+    .card-img {
+        /* 隐藏该图片元素。 */
+        display: none;
+    }
+
+    .card-img-desktop {
+        /* 自己单独占据一整行空间 */
+        display: block;
+        /* 让它占据卡片容器的一半宽度，与内容区各占 50% */
+        width: 50%;
+    }
+
+    .content {
+        justify-content: center;
+    }
+}
