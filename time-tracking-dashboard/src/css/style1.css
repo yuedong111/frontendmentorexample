@@ -1,0 +1,409 @@
+:root {
+  --Blue: hsl(246, 80%, 60%);
+  --Dark-blue: hsl(224, 46%, 9%);
+  --Light-blue: hsl(236, 44%, 20%);
+  --Hover_blue: hsl(236, 41%, 34%);
+  --Light_orange: hsl(15, 100%, 70%);
+  --Soft_blue: hsl(195, 74%, 62%);
+  --Light_red: hsl(348, 100%, 68%);
+  --Lime_green: hsl(145, 58%, 55%);
+  --Violet: hsl(264, 64%, 52%);
+  --Soft_orange: hsl(43, 84%, 65%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  color: #fff;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* 在这里写只在“屏幕”且“视口宽度 ≥ 768px”时才生效的规则,
+常用的还有 print（打印机）、speech（读屏软件）等。写成 screen 或省略（因为默认就针对屏幕）。 */
+@media screen and (min-width: 768px) {
+  main {
+    background-color: var(--Dark-blue);
+    height: 100vh;
+  }
+  a,
+  a:active,
+  a:hover {
+    /* 也就是去掉链接的默认下划线 */
+    text-decoration: none;
+  }
+
+  .container {
+    /* 让容器的宽度“恰好包裹”它内部的内容——既不会比内容窄，也不会空出多余空间。
+        相当于把 width 设为“内容所需的最小宽度”。 */
+    width: fit-content;
+    display: flex;
+    /* 让一个有固定或自适应宽度的块级元素在父容器中水平居中。 上下0 左右auto ，
+    浏览器会将容器剩余的水平空间平均分配给左右两个 auto 边距，从而将元素水平居中。
+    必须是块级盒子（display: block、flex-item 才有居中效果 */
+    margin: 0 auto;
+    /* 在容器顶部添加等于当前字体大小两倍的内边距 */
+    padding-top: 2em;
+  }
+
+  .container .report-perfil-container {
+    /* 宽度固定为 300 像素 */
+    width: 300px;
+    /* 元素的右侧添加外边距，大小为 1.5em，也就是当前元素字体大小的 1.5 倍，避免紧贴 */
+    margin-right: 1.5em;
+  }
+
+  .container .report-perfil {
+    width: 100%;
+    background-color: var(--Blue);
+
+    /* padding（内边距）：在 内容区（content box）与 边框（border）之间。
+
+        margin（外边距）：在 边框（border）之外，推挤元素与相邻元素／容器的距离。
+
+┌───────────── margin ─────────────┐
+│ ┌── border ──┐                   │
+│ │┌ padding ┐│                   │
+│ ││ content ││                   │
+│ │└─────────┘│                   │
+│ └───────────┘                   │
+└─────────────────────────────────┘
+
+padding 语义上是“元素内部留白”，强调 内容和容器边框 之间的距离, padding会让元素变大，增大元素的总尺寸。
+
+margin 语义上是“元素与外界留白”，强调 元素与其他元素 之间的距离。
+ */
+    padding: 1.5em;
+    padding-bottom: 5em;
+    border-radius: 1em;
+    /* 激活 z-index */
+    position: relative;
+    z-index: 2;
+  }
+
+  .container .report-perfil img {
+    width: 100px;
+    /* 在图片下方留出 2em 的外边距，常用于与后续内容保持间距 */
+    margin-bottom: 2em;
+    /* border-radius 值为 50% 已足以生成圆形，100% 同样有效，只要宽高一致，就会把矩形图片裁切成圆形。 */
+    border-radius: 100%;
+    /* 围绕头像加一圈 4px 宽的白色实线边框，既能突出头像，又能与背景或其他元素形成视觉对比 */
+    border: solid white 4px;
+  }
+
+  .container .time-option {
+    background-color: var(--Light-blue);
+    padding: 1.5em;
+    /* 上方内边距加大到 2.8em，通常用于腾出空间给上方重叠或突出内容。 */
+    padding-top: 2.8em;
+    padding-left: 1.7em;
+    display: flex;
+    /* 参数顺序为：top-left top-right bottom-right bottom-left。
+            此处只给下方两个角 (bottom-right 和 bottom-left) 加 1em 圆角，上方角保持直角。常用于卡片底部做柔和收尾。 
+        */
+    border-radius: 0 0 1em 1em;
+    flex-direction: column;
+    /* 将整个 .time-option 元素在垂直方向上向上移动 1em，常见于与上方元素（如带背景的头部）部分重叠，制造层次感。
+        transform会自动创建一个新的层叠上下文使z-index生效。
+        由于子容器因为 transform 而被“提升”到父上下文的一个更高绘制层级，所以它整体会压在那些未被 transform 的兄弟上，哪怕它们的 z-index 更大，也无法“抢回”绘制次序。 */
+    transform: translateY(-1em);
+    z-index: 1;
+  }
+
+  .container .time-option button {
+    /* 上下各留 0.5em 空隙，左右为 0，使按钮垂直分隔 */
+    margin: 0.5em 0;
+    /* 去掉按钮默认的背景色和边框，视觉上更像一条条文字而非实体按钮 */
+    background: transparent;
+    border: none;
+    /* 去除获得焦点时的默认高亮外轮廓 */
+    outline: none;
+    /* 强制按钮文本贴左显示，符合列表或菜单的排版习惯 */
+    text-align: left;
+    /* 字体大小设为继承值（一般与父元素一致） */
+    font-size: 1em;
+    /* 在字母间增加微小空隙，让文字显得更通透、易读 */
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+  .container .reports-container {
+    display: grid;
+    /* 相当于grid-template-columns: 1fr 1fr 1fr; 
+        将容器宽度（扣除 gap 后的剩余空间）平均分成 3 份，每列各占其中一份；不管容器多宽，三列始终等宽。*/
+    grid-template-columns: repeat(3, 1fr);
+    /* 是给行和列之间统一添加的空隙 */
+    gap: 1em;
+  }
+  .reports-container {
+    min-width: 900px;
+  }
+
+  .report-information {
+    background-color: var(--Light-blue);
+    padding: 1.5em 2em;
+    border-radius: 1em;
+    /* 沿垂直方向向上平移 0.8em，常用于“抬起”效果，让元素盖在相邻元素上 */
+    transform: translateY(-0.8em);
+    /* 对该元素的 所有可过渡属性（all）生效。
+        持续时间 0.3s，缓动函数 ease（先快后慢再快） */
+    transition: 0.3s ease all;
+    cursor: pointer;
+  }
+  .report-information:hover {
+    background-color: var(--Hover_blue);
+  }
+
+  .report-information .title {
+    display: flex;
+    /* 在主轴（水平方向）上，将第一个子元素推到最左，最后一个子元素推到最右，中间的空间自动等分留空，形成“左右两端对齐”的效果。 */
+    justify-content: space-between;
+    width: 100%;
+    /* 定文字大小为其父元素字体大小的 1.1 倍，让标题文字略微放大突出 */
+    font-size: 1.1em;
+  }
+  .report-information h2 {
+    font-weight: 200;
+    font-size: 4em;
+    /* 上下外边距分别是 .4em，左右外边距为  */
+    margin: 0.4em 0;
+  }
+
+  .portada {
+    height: 50px;
+    /* 只有上边两个角（左上、右上）被圆角化，圆角半径大小是 1em（即当前字体大小的 1 倍），而下边的两个角保持直角。 */
+    border-radius: 1em 1em 0 0;
+  }
+  .work .portada {
+    background-image: url("../../images/icon-work.svg");
+    /* 将背景图水平放在容器的最右侧，垂直方向默认居中。 */
+    background-position: right;
+    /* 禁止背景图像平铺，只显示一份在指定位置。
+            如果不写，默认会“横向+纵向”无限平铺。 */
+    background-repeat: no-repeat;
+    background-color: var(--Light_orange);
+
+    /*上面可以合并为 background: var(--Light_orange) url("../../images/icon-work.svg") no-repeat right; */
+  }
+
+  .play .portada {
+    background-image: url("../../images/icon-play.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Soft_blue);
+  }
+
+  .study .portada {
+    background-image: url("../../images/icon-study.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Light_red);
+  }
+
+  .exercise .portada {
+    background-image: url("../../images/icon-exercise.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Lime_green);
+  }
+
+  .social .portada {
+    background-image: url("../../images/icon-social.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Violet);
+  }
+
+  .self-care .portada {
+    background-image: url("../../images/icon-self-care.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+
+    background-color: var(--Soft_orange);
+  }
+}
+
+.last-time {
+  color: hsl(0, 1%, 72%);
+}
+
+.text-muted {
+  color: hsl(0, 1%, 72%);
+}
+
+.big-text {
+  font-size: 2em;
+  font-weight: 100;
+}
+
+/* 当视口宽度是 800px 时：
+
+    @media screen and (max-width: 900px) 会匹配（800 ≤ 900）
+
+    @media screen and (min-width: 768px) 也会匹配（800 ≥ 768）
+
+    也就是说，在 768px ～ 900px 的区间，两条媒体查询都会生效。如果它们内部定义了同一个属性，后写的那条规则会覆盖前面的。 */
+
+@media screen and (max-width: 900px) {
+  main {
+    background-color: var(--Dark-blue);
+  }
+
+  .big-text {
+    font-size: 1.6em;
+    font-weight: 100;
+  }
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+  }
+
+  .container .report-perfil-container {
+    margin-right: 1.5em;
+    width: 100%;
+  }
+
+  .container .report-perfil {
+    background-color: var(--Blue);
+    padding: 1em;
+    border-radius: 1em;
+    position: relative;
+    z-index: 2;
+    display: flex;
+  }
+
+  .container .report-perfil img {
+    width: 100px;
+    height: 100px;
+    margin-right: 1em;
+    border-radius: 100%;
+    border: solid white 4px;
+  }
+
+  .container .report-perfil > div {
+    margin-top: 1.4em;
+  }
+
+  .container .time-option {
+    background-color: var(--Light-blue);
+    padding: 1.5em;
+    padding-top: 2.8em;
+    padding-left: 1.7em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 0 0 1em 1em;
+    transform: translateY(-1em);
+  }
+
+  .container .time-option button {
+    margin: 0.5em 0;
+    background: transparent;
+    text-align: left;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+
+  .container .reports-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+  }
+
+  .report-information {
+    background-color: var(--Light-blue);
+    padding: 1.5em 2em;
+    border-radius: 1em;
+    transform: translateY(-0.8em);
+    transition: 0.3s ease all;
+    cursor: pointer;
+  }
+
+  .report-information:hover {
+    background-color: var(--Hover_blue);
+  }
+
+  .report-information .title {
+    display: flex;
+    justify-content: space-between;
+    width: 100;
+    font-size: 1.1em;
+  }
+
+  .report-information h2 {
+    display: inline;
+    font-weight: 100;
+    font-size: 3em;
+    margin: 0.5em 0;
+  }
+
+  .report-information p {
+    display: inline;
+    float: right;
+    font-size: 0.9em;
+  }
+
+  .last-time {
+    margin-top: 1.9em;
+  }
+  .portada {
+    height: 50px;
+    border-radius: 1em 1em 0 0;
+  }
+
+  .work .portada {
+    background-image: url("../../images/icon-work.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Light_orange);
+  }
+
+  .play .portada {
+    background-image: url("../../images/icon-play.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Soft_blue);
+  }
+
+  .study .portada {
+    background-image: url("../../images/icon-study.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Light_red);
+  }
+
+  .exercise .portada {
+    background-image: url("../../images/icon-exercise.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Lime_green);
+  }
+
+  .social .portada {
+    background-image: url("../../images/icon-social.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: var(--Violet);
+  }
+
+  .self-care .portada {
+    background-image: url("../../images/icon-self-care.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+
+    background-color: var(--Soft_orange);
+  }
+}
