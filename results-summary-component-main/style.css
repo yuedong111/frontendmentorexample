@@ -1,0 +1,135 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+  --ff-main: "Hanken Grotesk", sans-serif;
+  --fs-main: 18px;
+
+  --fw-500: 500;
+  --fw-700: 700;
+  --fw-800: 800;
+
+  /* Responsive Screens */
+  --screen-sm: 375px;
+  --screen-lg: 1440px;
+  --screen-xl: 1920px;
+
+  /* Colors */
+  --light-red: hsl(0, 100%, 67%);
+  --orangey-yellow: hsl(39, 100%, 56%);
+  --green-teal: hsl(166, 100%, 37%);
+  --cobalt-blue: hsl(234, 85%, 45%);
+
+  --light-slate-blue-background: hsl(252, 100%, 67%);
+  --light-royal-blue-background: hsl(241, 81%, 54%);
+
+
+  --violet-blue-circle: hsla(256, 72%, 46%, 1);
+  --persian-blue-circle: hsla(241, 72%, 46%, 0);
+
+  --white: hsl(0, 0%, 100%);
+  --pale-blue: hsl(221, 100%, 96%);
+  --light-lavender: hsl(241, 100%, 89%);
+  --dark-gray-blue: hsl(224, 30%, 27%);
+}
+
+body{
+    font-family: var(--ff-main);
+    font-size: var(--fs-main);
+    background-color: var(--pale-blue);
+    color: var(--dark-gray-blue);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1.1rem;
+    font-weight: var(--fw-500);
+    align-items: stretch;
+    max-width: 40rem;
+    overflow: hidden;
+}
+
+.left-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 50%;
+    border-radius: 1rem;
+    background-color: var(--cobalt-blue);
+    transform: translateX(1em);
+}
+
+.right-card{
+   border-radius:0 1rem 1rem 0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   background-color: var(--white);
+   width: 50%;
+}
+
+.header {
+    color: var(--white);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.score {
+    border-radius: 50%;
+    background:  linear-gradient(
+    var(--violet-blue-circle),
+    var(--persian-blue-circle)
+    );
+    width: 7rem;            
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-number {
+  font-size: 2.5rem;
+  font-weight: var(--fw-700);
+  color: var(--white);
+  margin: 0;
+}
+
+.score-text {
+  font-size: 1rem;
+  color: var(--pale-blue);
+  margin: 0;
+}
+
+.result-text{
+  color: var(--white);
+  font-size: 1.75rem;
+  font-weight: var(--fw-700);
+  margin-bottom: 1rem;
+}
+
+.left-footer {
+  width: 100%; 
+  color:var(--pale-blue);
+  padding: 0rem 2rem;
+  font-size: 0.9rem;            /* 稍微比主体小一点 *d
+  line-height: 1.4;             /* 可读性更好 */
+  max-width: 24rem;             /* 限宽，避免超长一行 和上面的padding结合调整换行处*/
+  text-align: center;           /* 保证换行后居中 */
+  
+}
