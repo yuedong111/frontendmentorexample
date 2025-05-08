@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* 伪元素 ::before / ::after：由 CSS “生成”出来的隐形节点，并不出现在你的 HTML 里，它们是目标元素的子元素，而非同级（兄弟）元素。
+它们生成在所选元素内部，分别作为第一个和最后一个子节点 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  /* 让链接的文字颜色继承自它的父元素，而不是使用浏览器默认的蓝色 */
+  color: inherit;
+}
+
+:root {
+  /* Fonts and text */
+  --ff-main: "Inter", sans-serif;
+  --fs-main: 14px;
+
+  --fw-400: 400;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  /* Responsive Screens */
+  --screen-sm: 320px;
+  --screen-lg: 1440px;
+  --screen-xl: 1920px;
+
+  /* Colors */
+  --location: #c5f82a;
+  --text: #ffffff;
+  --grey-700: hsl(0, 0%, 20%);
+  --grey-800: hsl(0, 0%, 12%);
+  --grey-900: hsl(0, 0%, 8%);
+}
+
+body {
+  font-family: var(--ff-main);
+  font-size: var(--fs-main);
+  background-color: var(--grey-900);
+  color: var(--text);
+  /* 最小高度等于视口高度（100vh），即使内容不足也能撑满屏幕 */
+  min-height: 100vh;
+}
+
+/* 块级元素的默认宽度（auto）已经是“填满父容器”，在这种需要全屏或全宽的父容器里，不用额外指定 width，反而保持了灵活的响应式特性。 */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1.1rem;
+  font-weight: var(--fw-400);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grey-800);
+  border-radius: 1rem;
+  padding: 2rem 3rem;
+  /* 宽度先设为占满父容器（即响应式适配窄屏），但又限制最大宽度不超过 390px，避免在大屏时过宽。 */
+  width: 100%;
+  max-width: 390px;
+  /* 在子元素之间自动插入 1.3rem 间距，避免手动为每个元素设置 margin，也可保证间距一致且不在首尾添加额外空隙。 */
+  gap: 1.3rem;
+}
+
+.card__image-container img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.userName {
+  color: var(--text);
+  font-size: 1.57rem;
+  font-weight: var(--fw-700);
+}
+
+.location {
+  color: var(--location);
+  font-weight: var(--fw-700);
+}
+
+.description {
+  color: var(--text);
+  /* 略小于根字号（约 15px），用于次要信息 */
+  font-size: 0.94rem;
+  text-align: center;
+}
+
+.card__socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* 容器宽度占满其父元素可用宽度 */
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* 用子元素组合器 > 选中 .card__socials 的每一个直接子节点，不论它们的标签名为何。 */
+.card__socials > * {
+  background-color: var(--grey-700);
+  width: 100%;
+  /* 上下留 0.9rem、左右留 0.5rem 的空间，保证点击区域足够且视觉均衡 */
+  padding: 0.9rem 0.5rem;
+  text-align: center;
+  /* 四角微圆，营造柔和的“按钮”感觉。 */
+  border-radius: 0.4rem;
+  font-weight: var(--fw-700);
+  /* 默认对所有可过渡属性应用 0.3s 的缓动过渡，确保后续状态变化平滑 */
+  transition: 0.3s;
+}
+
+.card__socials > *:hover {
+  background-color: var(--location);
+  color: var(--grey-900);
+}
