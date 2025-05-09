@@ -1,76 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Results summary component</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <div class="left-card">
-      <div>
-        <p class="header">Your Result</p>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
 
+    <title>Frontend Mentor | Results summary component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-card">
+        <div>
+          <p class="header">Your Result</p>
+        </div>
+        <div class="score">
+          <p class="score-number">76</p>
+          <p class="score-text">of 100</p>
+        </div>
+        <div class="result-level">
+          <p class="result-text">Great</p>
+        </div>
+        <div>
+          <p class="left-footer">
+            You scored higher than 65% of the people who have taken these tests.
+          </p>
+        </div>
       </div>
-      <div class="score">
-        <p class="score-number">76</p>
-        <p class="score-text">of 100</p>
+      <div class="right-card">
+        <div class="right-header">
+          <p class="right-head">Summary</p>
+        </div>
+        <div class="summary">
+          <div class="summary-item">
+            <p class="results__item-text">
+              <img
+                src="./assets/images/icon-reaction.svg"
+                alt="reaction icon"
+              />
+              <span>Reaction</span>
+            </p>
+            <p><span class="results__item-score"> 80 </span> / 100</p>
+          </div>
+          <div class="summary-item">
+            <p class="results__item-text">
+              <img src="./assets/images/icon-memory.svg" alt="memory icon" />
+              <span>Memory</span>
+            </p>
+            <p><span class="results__item-score"> 92 </span> / 100</p>
+          </div>
+          <div class="summary-item">
+            <p class="results__item-text">
+              <img src="./assets/images/icon-verbal.svg" alt="chat con" />
+              <span>Verbal</span>
+            </p>
+            <p><span class="results__item-score"> 61 </span>/ 100</p>
+          </div>
+          <div class="summary-item">
+            <p class="results__item-text">
+              <img src="./assets/images/icon-visual.svg" alt="eye icon" />
+              <span>Visual</span>
+            </p>
+            <p><span class="results__item-score"> 72 </span> / 100</p>
+          </div>
+        </div>
+        <div class="right-footer">Continue</div>
       </div>
-      <div class="result-level">
-        <p class="result-text">Great</p>
-      </div>
-      <div>
-        <p class="left-footer">You scored higher than 65% of the people who have taken these tests.</p>
-      </div>
-      
     </div>
-    <div class="right-card">
-      <div>
-        <p class="right-head">Summary</p>
-      </div>
-      <div class="summary">
-        <div class="summary-item">
-          <img src="./assets/images/icon-reaction.svg" alt="reaction icon" class="icon">
-          <div class="summary-item-right">
-            <p class="summary-text">Reaction</p>
-            <p class="score-number">80 / 100</p>
-          </div>
-          
-        </div>
-        <div class="summary-item">
-          <img src="./assets/images/icon-memory.svg" alt="memory icon" class="icon">
-          <div class="summary-item-right">
-            <p class="summary-text">Memory</p>
-            <p class="score-number">92 / 100</p>
-          </div>
-          
-        </div>
-        <div class="summary-item">
-           <img src="./assets/images/icon-verbal.svg" alt="verbal icon" class="icon">
-          <div class="summary-item-right">
-            <p class="summary-text">Verbal</p>
-            <p class="score-number">61 / 100</p>
-          </div>
-         
-        </div>
-        <div class="summary-item">
-          <img src="./assets/images/icon-visual.svg" alt="visual icon" class="icon">
-          <div class="summary-item-right">
-            <p class="summary-text">Visual</p>
-            <p class="score-number">72 / 100</p>
-          </div>
-        </div>
-      </div>
-      <div class="right-footer">Continue</div>
-
-    </div>
-  </div>
-</body>
+  </body>
 </html>
