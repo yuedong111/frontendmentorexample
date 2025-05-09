@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style1.css" />
+    <title>Product List with Cart</title>
+  </head>
+  <body>
+    <div class="container bg">
+      <div class="desert-section">
+        <h1 class="desert-title">Desserts</h1>
+
+        <div class="desert-card" id="desert-card"></div>
+      </div>
+
+      <!-- Cart Section -->
+      <div class="cart-section">
+        <h1 class="cart-title">Your Cart (<span id="quantity">0</span>)</h1>
+        <div class="cart-cards" id="empty_cart">
+          <img
+            src="./assets/images/illustration-empty-cart.svg"
+            alt="empty"
+            class="empty"
+          />
+          <p>Your added items will appear here</p>
+        </div>
+
+        <div class="cart_items" id="cart_items" style="display: none">
+          <div class="cart" id="added_item">
+            <div class="added_item"></div>
+          </div>
+          <div class="order" id="order">
+            <div class="order-total">
+              <p>Order Total</p>
+              <div class="total">$ <span id="total_price">0</span></div>
+            </div>
+            <div class="carbon">
+              <img src="./assets/images/icon-carbon-neutral.svg" alt="carbon" />
+              <p>This is a <span class="bold">carbon-neutral</span> delivary</p>
+            </div>
+            <a href="#confirm_order_list" id="confirm">Confrim Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="confirm_order_list">
+      <div class="confirm_order" id="confirm_order">
+        <img src="./assets/images/icon-order-confirmed.svg" />
+        <h1 class="confirmed">Order Confirmed</h1>
+        <p class="enjoy">We hope you enjoy your food!</p>
+        <div id="confirm-item">
+          <div class="confirm-item" id="confirm_item">
+            <div class="item-info">
+              <p class="name">Classic Waffle</p>
+              <div class="count_price">
+                <p class="count" id="count_final">1X</p>
+                <p class="price">@ <span id="price">5.50</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ordertotal">
+          <p>Order Total</p>
+          <p class="Final">$ <span id="final_price_confirm">0</span></p>
+        </div>
+        <button id="new">Start New Order</button>
+      </div>
+    </div>
+    <div class="con" id="con"></div>
+
+    <script src="getData.js"></script>
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
