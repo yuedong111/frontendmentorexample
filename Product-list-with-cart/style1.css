@@ -368,22 +368,29 @@ h1 {
 }
 
 .confirm_order {
+  /* 绝对定位：脱离文档流 */
   position: absolute;
+  /* 居中 */
   top: 50%;
   left: 50%;
+  /* 再在自身坐标系下向左、向上各移动自身宽高的 50%，实现完美居中 */
   transform: translate(-50%, -50%);
+
   width: 500px;
   border-radius: 0;
   background-color: var(--Rose50);
   color: black;
-  display: flex;
+  /* display: flex; */
+  /* 如果切换到 flex 布局，子项纵向堆叠 */
   flex-direction: column;
   justify-content: start;
   align-items: baseline;
   gap: 20px;
+  /* 叠放层级为 10，确保弹窗覆盖在其他内容之上 */
   z-index: 10;
   padding: 20px;
   border-radius: 10px;
+  /* 默认隐藏；当需要显示时可改为 flex 或 block */
   display: none;
 }
 #confirm_order:hover {
